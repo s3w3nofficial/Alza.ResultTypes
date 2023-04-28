@@ -40,7 +40,11 @@ public class ResultTypeBenchmark
     public void ResultTypeGetUser()
     {
         var result = CreateUser();
-
-        var user = result.Result;
+    }
+    
+    [Benchmark]
+    public void ResultTypeGetException()
+    {
+        var result = CreateUserException();
     }
 }

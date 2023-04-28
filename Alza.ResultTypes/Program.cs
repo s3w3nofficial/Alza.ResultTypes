@@ -4,5 +4,5 @@ using Alza.ResultTypes.Benchmarks;
 using BenchmarkDotNet.Running;
 
 var summary = BenchmarkRunner.Run<OneOfBenchmark>();
-//var summary = BenchmarkRunner.Run<OneOfBenchmark>();
-//var summary = BenchmarkRunner.Run<OneOfBenchmark>();
+//var summary = BenchmarkRunner.Run<VanillaBenchmark>();
+//var summary = BenchmarkRunner.Run<ResultTypeBenchmark>();

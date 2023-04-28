@@ -62,4 +62,39 @@ public class VanillaBenchmark
             };
         }
     }
+    
+    [Benchmark]
+    public void VanillaGetException()
+    {
+        ResultType<User> result;
+
+        try
+        {
+            var newUser = CreateUserException();
+
+            result = new ResultType<User>
+            {
+                Result = newUser,
+                Status = "SUCCESS"
+            };
+        }
+        catch (InvalidNameException invalidNameException)
+        {
+            result = new ResultType<User>
+            {
+                Result = null,
+                Status = "FAILURE",
+                Message = invalidNameException.Message
+            };
+        }
+        catch (NameTakenException nameTakenException)
+        {
+            result = new ResultType<User>
+            {
+                Result = null,
+                Status = "FAILURE",
+                Message = nameTakenException.Message
+            };
+        }
+    }
 }

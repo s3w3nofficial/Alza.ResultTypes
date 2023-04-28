@@ -50,4 +50,26 @@ public class OneOfBenchmark
             Message = nameTaken.Message
         });
     }
+    
+    [Benchmark]
+    public void OneOfGetException()
+    {
+        var newUser = CreateUserException();
+
+        var result = newUser.Match<ResultType<User>>(user => new ResultType<User>
+        {
+            Result = user,
+            Status = "SUCCESS"
+        }, invalidName => new ResultType<User>
+        {
+            Result = null,
+            Status = "FAILURE",
+            Message = invalidName.Message
+        }, nameTaken => new ResultType<User>
+        {
+            Result = null,
+            Status = "FAILURE",
+            Message = nameTaken.Message
+        });
+    }
 }
